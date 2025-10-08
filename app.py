@@ -1,4 +1,8 @@
 # app.py
+streamlit==1.30.0
+transformers==4.40.0
+torch==1.13.1+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html
+
 import streamlit as st
 from transformers import pipeline
 import torch
@@ -75,4 +79,5 @@ if st.button("Analyze Sentiment"):
             <p style="font-size:22px; font-weight:bold">{text_label} {emoji} (Confidence: {score*100:.2f}%)</p>
         </div>
         """, unsafe_allow_html=True)
+
 
