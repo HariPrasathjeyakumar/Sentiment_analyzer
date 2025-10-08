@@ -1,8 +1,4 @@
 # app.py
-streamlit==1.30.0
-transformers==4.40.0
-torch==1.13.1+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html
-
 import streamlit as st
 from transformers import pipeline
 import torch
