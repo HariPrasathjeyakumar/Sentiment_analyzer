@@ -14,17 +14,17 @@ st.set_page_config(
 )
 
 # -----------------------------
-# 2️⃣ Load pretrained sentiment model
+# 2️⃣ Load pretrained sentiment model with spinner
 # -----------------------------
-@st.cache_resource(show_spinner=True)
-def load_model():
-    return pipeline(
+import time
+
+with st.spinner("Loading sentiment model... This may take a few minutes!"):
+    sentiment_pipeline = pipeline(
         "sentiment-analysis",
         model="distilbert-base-uncased-finetuned-sst-2-english",
-        device=0 if torch.cuda.is_available() else -1
+        device=-1  # CPU only (Streamlit Cloud has no GPU by default)
     )
 
-sentiment_pipeline = load_model()
 
 # -----------------------------
 # 3️⃣ App title & description
@@ -75,3 +75,4 @@ if st.button("Analyze Sentiment"):
             <p style="font-size:22px; font-weight:bold">{text_label} {emoji} (Confidence: {score*100:.2f}%)</p>
         </div>
         """, unsafe_allow_html=True)
+
