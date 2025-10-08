@@ -1,3 +1,2 @@
 streamlit==1.30.0
-transformers==4.40.0
-onnxruntime==1.16.1
+textblob==0.17.1
